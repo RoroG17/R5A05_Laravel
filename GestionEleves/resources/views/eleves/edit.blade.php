@@ -1,3 +1,5 @@
+@extends('template')
+@section('content')
 <div>
     <form action="{{ route('eleves.update', $eleve->id) }}" method="POST">
         @csrf
@@ -7,7 +9,7 @@
         <label>Date de Naissance :</label><input type="date" name="date_naissance" value="{{ $eleve->date_naissance }}" required>
         <label>Numéro étudiant :</label><input type="text" name="numero_etudiant" value="{{ $eleve->numero_etudiant }}" required>
         <label>Email :</label><input type="email" name="email" value="{{ $eleve->email }}" required>
-        <label>Image :</label><input type="text" name="image" value="{{ $eleve->image }}">
         <button type="submit">Mettre à jour</button>
     </form>
 </div>
+@endsection

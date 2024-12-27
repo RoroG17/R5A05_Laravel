@@ -1,3 +1,5 @@
+@extends('template')
+@section('content')
 <div>
     <form action="{{ route('evaluations.update', $evaluation->id) }}" method="POST">
         @csrf
@@ -15,3 +17,4 @@
         <button type="submit">Mettre à jour</button>
     </form>
 </div>
+@endsection

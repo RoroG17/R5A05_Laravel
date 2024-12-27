@@ -1,3 +1,5 @@
+@extends('template')
+@section('content')
 <div>
     <a href="{{ route('modules.create') }}">Ajouter un module</a>
     
@@ -30,3 +32,4 @@
         </tbody>
     </table>
 </div>
+@endsection

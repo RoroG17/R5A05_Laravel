@@ -1,3 +1,5 @@
+@extends('template')
+@section('content')
 <div>
     <form action="{{ route('evaluation_eleve.update', $eleveEvaluation->id) }}" method="POST">
         @csrf
@@ -9,6 +11,7 @@
                 <option value="{{ $eleve->id }}">{{ $eleve->nom }} - {{ $eleve->prenom }}</option>
             @endforeach
         </select>
+        
         <label>Module :</label>
         <select name="module" id="module" required>
             <option value="{{ $eleveEvaluation->evaluation }}" selected>{{ $eleveEvaluation->titre }}</option>
@@ -16,7 +19,9 @@
                 <option value="{{ $eval->id }}">{{ $eval->titre }}</option>
             @endforeach
         </select>
+
         <label>Note :</label><input type="float" name="note" value="{{ $eleveEvaluation->note }}" required>
         <button type="submit">Mettre à jour</button>
     </form>
 </div>
+@endsection

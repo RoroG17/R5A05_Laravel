@@ -35,3 +35,4 @@
 {{ $eleves->links() }}
 
 </div>
+@endsection

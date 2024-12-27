@@ -1,3 +1,5 @@
+@extends('template')
+@section('content')
 <div>
     <a href="{{ route('evaluation_eleve.create') }}">Ajouter une évaluation</a>
 
@@ -39,3 +41,4 @@
     </table>
 
 </div>
+@endsection

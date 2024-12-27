@@ -1,3 +1,5 @@
+@extends('template')
+@section('content')
 <div>
     <form action="{{ route('evaluation_eleve.store') }}" method="POST">
         @csrf
@@ -20,3 +22,4 @@
         <button type="submit">Ajouter</button>
     </form>
 </div>
+@endsection

@@ -1,3 +1,5 @@
+@extends('template')
+@section('content')
 <div>
     <form action="{{ route('modules.store') }}" method="POST">
         @csrf
@@ -7,3 +9,4 @@
         <button type="submit">Ajouter</button>
     </form>
 </div>
+@endsection

@@ -1,10 +1,13 @@
+@extends('template')
+@section('content')
 <div>
-    <h1>{{ $eleve->nom }} {{ $eleve->prenom }}</h1>
+    <h1>{{ $eleve->nom }} {{ $eleve->prenom }}</h1> <img src="{{ asset('storage/' . $eleve->image) }}" alt="Image de {{ $eleve->nom }}" width="150">
     <p>Numéro étudiant : {{ $eleve->numero_etudiant }}</p>
     <p>Date de naissance : {{ $eleve->date_naissance }}</p>
     <p>Email : {{ $eleve->email }}</p>
     <p>Image : {{ $eleve->image }}</p>
 
+    <h1>Notes : </h1>
     <table>
         <thead>
         <td>Date</td>
@@ -23,4 +26,6 @@
         @endforeach
         </tbody>
     </table>
+    <p>Moyenne de l'élève : {{ $moyenne }}</p>
 </div>
+@endsection

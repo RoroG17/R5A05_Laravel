@@ -7,6 +7,8 @@ use App\Models\Evaluation;
 use App\Models\Module;
 use App\Models\EvaluationEleve;
 
+use Illuminate\Support\Facades\Auth;
+
 class EvaluationController extends Controller
 {
     /**
@@ -14,7 +16,11 @@ class EvaluationController extends Controller
      */
     public function index()
     {
-        // !!!!! Coeff dans modules et evaluations
+        $user = Auth::user();
+        if ($user->role == 2 ){
+            return redirect()->route('eleves.index');
+        }
+        
         $evaluations = Evaluation::join('modules','evaluations.module', '=', 'modules.code')->select('evaluations.*', 'modules.code', 'modules.nom')->get();
         return view('/evaluations/index', compact('evaluations'));
     }
@@ -52,6 +58,7 @@ class EvaluationController extends Controller
             ->where('evaluation_eleves.evaluation', '=', $id)
             ->where('evaluation_eleves.note', '<', 10)
             ->get();
+
         return view('/evaluations/show', compact('evaluation', 'notes', 'notesNuls'));
     }
 

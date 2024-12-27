@@ -1,3 +1,5 @@
+@extends('template')
+@section('content')
 <div>
     <form action="{{ route('modules.update', $module->code) }}" method="POST">
         @csrf
@@ -8,3 +10,4 @@
         <button type="submit">Mettre à jour</button>
     </form>
 </div>
+@endsection

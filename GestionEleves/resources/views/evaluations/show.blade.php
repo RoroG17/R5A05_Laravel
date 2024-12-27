@@ -1,3 +1,5 @@
+@extends('template')
+@section('content')
 <div>
     <h1>{{ $evaluation->module }} - {{ $evaluation->titre }}</h1>
     <p>Module : {{ $evaluation->nom }}</p>
@@ -47,3 +49,4 @@
 
 
 </div>
+@endsection

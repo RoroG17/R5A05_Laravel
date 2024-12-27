@@ -14,8 +14,12 @@
             <ul>
                 <li><a href="{{ route('eleves.index') }}">Eleves</a></li>
                 <li><a href="{{ route('modules.index') }}">Modules</a></li>
+                <li><a href="{{ route('evaluations.index') }}">Evaluations</a></li>
+                <li><a href="{{ route('evaluation_eleve.index') }}">Notes</a></li>
             </ul>
         </nav>
     </header>
+
+    @yield('content')
 </body>
 </html>

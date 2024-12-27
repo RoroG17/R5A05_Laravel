@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Module;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\Auth;
+
 class ModuleController extends Controller
 {
     /**
@@ -13,6 +15,10 @@ class ModuleController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+        if ($user->role == 2 ){
+            return redirect()->route('eleves.index');
+        }
         $modules = Module::all();
         return view('modules/index', compact('modules'));
     }

@@ -36,14 +36,26 @@ class EleveController extends Controller
             'date_naissance' => 'required|date',
             'numero_etudiant' => 'required|string|unique:eleves,numero_etudiant',
             'email' => 'required|email|unique:eleves,email',
-            'image' => 'nullable|string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        Eleve::create($request->all());
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images/eleves', 'public');
+        }
+        
+        $eleve = new Eleve();
+        $eleve->nom = $request->nom;
+        $eleve->prenom = $request->prenom;
+        $eleve->date_naissance = $request->date_naissance;
+        $eleve->numero_etudiant = $request->numero_etudiant;
+        $eleve->email = $request->email;
+        $eleve->image = $imagePath;
+        $eleve->save();
+        
         return redirect()->route('eleves.index');
     }
 
@@ -57,7 +69,8 @@ class EleveController extends Controller
                                 ->join('modules', 'evaluations.module', 'modules.code')
                                 ->where('evaluation_eleves.eleve', '=', $id)
                                 ->get();
-        return view('eleves/show', compact('eleve', 'notes'));
+        $moyenne = Eleve::getMoyenne($notes);
+        return view('eleves/show', compact('eleve', 'notes', 'moyenne'));
     }
 
 

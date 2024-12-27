@@ -1,3 +1,5 @@
+@extends('template')
+@section('content')
 <div>
     <h1>{{ $module->code }} - {{ $module->nom }}</h1>
     <p>Code : {{ $module->code }}</p>
@@ -5,3 +7,4 @@
     <p>Coefficient : {{ $module->coefficient }}</p>
 
 </div>
+@endsection
